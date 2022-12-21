@@ -1,0 +1,15 @@
+h1{
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: aqua;
+    background-color: violet;
+}
+
+body{
+    background-color: wheat;
+}
+
+hr{
+    color: bisque;
+    background-color: antiquewhite;
+}

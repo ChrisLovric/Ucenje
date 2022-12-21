@@ -1,0 +1,41 @@
+h1{
+    font-size: 4rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.zelena{
+    color: wheat;
+    text-indent: 0.7rem;
+    padding: 15px;
+    margin: 15px;
+    border: 2px solid burlywood;
+}
+
+.crvena{
+    color: red;
+    text-indent: 1rem;
+    padding: 20px;
+    margin: 25px;
+    border: 3px solid salmon;
+}
+
+.plava{
+    color: blue;
+    text-indent: 2rem;
+    padding: 30px;
+    margin: 30px;
+}
+
+body{
+    background-color: aquamarine;
+}
+
+#veliko{
+    font-size: 3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+address{
+    font-size: 5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
