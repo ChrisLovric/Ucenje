@@ -30,6 +30,11 @@
           <li><a target="_blank"href="zadatak3.php">Zadatak 3</a></li>
           <li><a target="_blank"href="uvjetnogrananjeswitch.php">Uvjetno grananje switch</a></li>
           <li><a target="_blank"href="zadatak4.php">Zadatak 4</a></li>
+          <li><a target="_blank"href="zadatak5.php">Zadatak 5</a></li>
+          <li><a target="_blank"href="forpetlja.php">For petlja</a></li>
+          <li><a target="_blank"href="incrementdecrement.php">Inkrement / dekrement</a></li>
+          <li><a target="_blank"href="nizovi.php">Nizovi</a></li>
+          <li><a target="_blank"href="ugradeninizovi.php">Ugrađeni nizovi</a></li>
         </ul>
       </li>
     </ul>
