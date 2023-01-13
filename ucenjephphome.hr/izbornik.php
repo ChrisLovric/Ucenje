@@ -37,6 +37,12 @@
           <li><a target="_blank"href="ugradeninizovi.php">Ugrađeni nizovi</a></li>
         </ul>
       </li>
+      <li class="has-submenu">
+        <a href="#0">Vježbe</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a target="_blank"href="incrementdecrementvjezbe.php">Increment / decrement vježbe</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </div>
