@@ -41,6 +41,7 @@
         <a href="#0">Vježbe</a>
         <ul class="submenu menu vertical" data-submenu>
           <li><a target="_blank"href="incrementdecrementvjezbe.php">Increment / decrement vježbe</a></li>
+          <li><a target="_blank"href="forpetljavjezbe.php">For petlja vježbe</a></li>
         </ul>
       </li>
     </ul>
