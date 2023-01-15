@@ -41,3 +41,23 @@ for($i=10;$i<51;$i=$i+4){
 
 echo '<hr>';
 
+//aritmeticka sredina dva broja
+
+$a = readline('unesi broj veći od 0: ');
+$b = readline('unesi broj veći od 0: ');
+
+$aritsredina = ($a + $b) / 2;
+
+echo $aritsredina;
+
+echo '<hr>';
+
+echo '<table>';
+for($i=1;$i<21;$i++){
+    echo '<tr>';
+    for($j=1;$j<21;$j++){
+        echo '<td style="text-align: right;">' . $i * $j, '</td>';
+    }
+    echo '</tr>';
+}
+echo '</table>';
