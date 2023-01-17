@@ -102,3 +102,22 @@ for($i=1;$i<=10;$i++){
 for(;;){
 break;
 }
+
+// samo za napredne
+	//$i; $s=0; for($i=1;$i<=100;$i++) $s+=$i;
+
+	// $i; $s; for($i=1, $s=0;$i<=100; $s+=$i, $i++);
+//
+	//	 $i=1; $s=0; for( ; $i<=100; $i++){ $s+=$i; }
+//
+		// $i; $s=0; for($i=1; ; $i++){ if($i<=100) $s+=$i; else break;}
+//
+	//	 $i; $s=0; for($i=1;$i<=100;){ $s+=$i; $i++;}
+//
+//		 $i; $s=0; for($i=1; ; ){ if($i<=100) {$s+=$i; $i++;} else break;}
+//
+//		 $i=1; $s=0; for( ; $i<=100 ; ){ $s+=$i; $i++;}
+//
+//		  $i=1; $s=0; for( ; ; $i++){if($i<=100)  $s+=$i; else break;}
+//
+//		 $i=1; $s=0; for( ;  ; ){if($i<=100) {$s+=$i; $i++;} else break;} 
