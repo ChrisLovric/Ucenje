@@ -36,11 +36,13 @@
         <li><a target="_blank"href="forpetlja.php">For petlja</a></li>
           <li><a target="_blank"href="whilepetlja.php">While petlja</a></li>
           <li><a target="_blank"href="dowhilepetlja.php">Do while petlja</a></li>
+          <li><a target="_blank"href="foreachpetlja.php">For each petlja</a></li>
         </ul>
         </li>
         <li><a target="_blank"href="incrementdecrement.php">Inkrement / dekrement</a></li>
         <li><a target="_blank"href="nizovi.php">Nizovi</a></li>
         <li><a target="_blank"href="ugradeninizovi.php">Ugrađeni nizovi</a></li>
+        <li><a href="forme.php">HTML forme</a></li>
         </ul>
         </li>
         <li>
@@ -52,6 +54,7 @@
           <li><a target="_blank"href="zadatak4.php">Zadatak 4</a></li>
           <li><a target="_blank"href="zadatak5.php">Zadatak 5</a></li>
           <li><a target="_blank"href="zadatakincdec.php">Zadatak increment/dekrement</a></li>
+          <li><a target="_blank"href="zadatak6.php">Zadatak 6</a></li>
       </ul>
       <li>
         <a href="#0">Vježbe</a>
