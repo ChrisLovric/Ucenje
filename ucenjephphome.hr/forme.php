@@ -14,6 +14,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     }else{
         $rez='';
     }
+
     if(isset($_POST['voce'])){
         $voce=$_POST['voce'];
     }else{
@@ -21,15 +22,26 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     }
 
     if(isset($_POST['povrce'])){
-        $povrce=$_POST['povrce']}{
+        $povrce=$_POST['povrce'];
+    }else{
+      $povrce=[];
+    }
     
+$grad=$_POST['grad'];
 
+$opis=$_POST['opis'];
+
+$datum=$_POST['datum'];
 
 }else{
     $pb='';
     $db='';
     $rez='';
     $voce='';
+    $povrce=[];
+    $grad=$gradovi[0];
+    $opis='';
+    $datum=date('Y-m-d',time());
 }
 
 
@@ -51,10 +63,11 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
           
           
             <form action="<?=$_SERVER['PHP_SELF']?>"
-            method="post">
+            method="post"
+            enxctype="multipart/form-data">
         
             <label> Prvi broj
-                <input type="text" name="pb">
+                <input type="text" name="pb" value="<?=$pb?>">
             </label>
 
 
@@ -71,7 +84,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 
             <br>
 
-            <input type="radio" name="voce" <?php if($voce==='jabuka'):?>
+            <input type="radio" name="voce" <?php if($voce==='kruska'):?>
                 checked="checked"
                 <?php endif;?>
                 id="kruska" value="kruska">
@@ -82,10 +95,18 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 
             <hr>
 
-            <input type="checkbox" name="povrce[]" id="kupus" value="kupus">
+            <input type="checkbox" name="povrce[]"
+            <?php if(in_array('kupus',$povrce)):?>
+              checked="checked"
+              <?php endif;?>
+              id="kupus" value="kupus">
             <label for="kupus">Kupus</label>
 
-            <input type="checkbox" name="povrce[]" id="mrkva" value="mrkva">
+            <input type="checkbox" name="povrce[]"
+            <?php if(in_array('mrkva',$povrce)):?>
+              checked="checked"
+              <?php endif;?>
+              id="mrkva" value="mrkva">
             <label for="mrkva">Mrkva</label>
 
             <hr>
@@ -93,11 +114,31 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
             <label for="grad">Grad</label>
             <select name="grad" id="grad">
                 <?php foreach($gradovi as $g): ?>
-                    <option value="<?"></option>
+                    <option
+                    <?php if($grad===$g):?>
+                      selected="selected"
+                      <?php endif;?>
+                      value="<?=$g?>"><?=$g?></option>
                     <?php endforeach; ?>
             </select>
 
-            <input class="success button expanded" type="submit" value="Izraćunaj">
+            <label for="opis">Opis</label>
+            <textarea name="opis" id="opis"
+            cols="30" rows="10"><?=$opis?></textarea>
+
+            <label for="slika1">Slika1</label>
+            <input type="file" name="slika1" id="slika1">
+
+            <br>
+
+            <label for="slika2">Slika2</label>
+            <input type="file" name="slika2" id="slika2">
+
+            <label for="datum">Datum</label>
+            <input type="date" name="datum" id="datum"
+            value="<?=$datum?>">
+
+            <input class="success button expanded" type="submit" value="Izračunaj">
 
             </form>
         
