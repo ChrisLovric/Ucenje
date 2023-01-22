@@ -61,3 +61,34 @@ for($i=1;$i<21;$i++){
     echo '</tr>';
 }
 echo '</table>';
+
+echo '<hr>';
+
+$zbroj=0;
+for($i=1;$i<30;$i++){
+    $zbroj += $i;
+}
+echo $zbroj;
+
+echo '<hr>';
+
+for($i=1;$i<=5;$i++){
+    for($j=1;$j<=$i;$j++){
+        echo "*";
+        if($j<$i){
+            echo " ";
+        }
+    }
+    echo "<br>";
+}
+
+echo '<hr>';
+
+for($i=1;$i<=10;$i++){
+    if($i<10){
+        echo "$i-";
+    }
+    else{
+        echo $i;
+    }
+}
