@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Pomocnovjezbe.php';
+
 for($i=30;$i>20;$i=$i-4){
     echo 'Osijek ' . $i-1, '<br>';
 }
@@ -92,3 +94,26 @@ for($i=1;$i<=10;$i++){
         echo $i;
     }
 }
+
+echo '<hr>';
+
+echo(strtoupper("the quick brown fox jumps over the lazy dog.")) . '<br>';
+echo(strtolower("THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG")) . '<br>';
+echo(ucfirst("the quick brown fox jumps over the lazy dog.")) . '<br>';
+echo(ucwords("the quick brown fox jumps over the lazy dog.")) . '<br>';
+
+echo '<hr>';
+
+function reverse_string($str1){
+    $i = strlen($str1);
+    if($i==1){
+        return$str1;
+    }else{
+        $i--;
+        return reverse_string(substr($str1,1,$i)) . substr($str1,0,1);
+    }
+}
+echo(reverse_string('4321') . '<br>');
+
+echo '<hr>';
+

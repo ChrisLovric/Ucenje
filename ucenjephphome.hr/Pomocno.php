@@ -48,8 +48,8 @@ class Pomocno{
 
     if ( $kontrolni == 10 ) { $kontrolni = 0; }
 
-    return $kontrolni == intval(substr($oib, 10, 1), 10);
+    return $kontrolni == intval(substr($oib, 10, 1), 10);   
    }
-
 }
+
 
