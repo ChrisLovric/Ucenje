@@ -79,6 +79,7 @@
         <ul class="submenu menu vertical" data-submenu>
           <li><a target="_blank"href="incrementdecrementvjezbe.php">Increment / decrement vježbe</a></li>
           <li><a target="_blank"href="vjezbe.php">Vježbe</a></li>
+          <li><a target="_blank"href="ciklicna.php">Ciklična tablica</a></li>
         </ul>
       </li>
     </ul>
