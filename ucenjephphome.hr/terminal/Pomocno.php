@@ -10,8 +10,8 @@ class Pomocno{
                 echo 'Unos mora biti između ' . $min . ' i ' . $max . PHP_EOL;
                 continue;
             }
+            return $i;
         }
-        return $i;
     }
 
     public static function unosTeksta($poruka){
@@ -29,7 +29,7 @@ class Pomocno{
     public static function unosDecimalnogBroja ($poruka){
         while(true){
             $s=readline($poruka);
-            $s=double($s);
+            $s=(double)$s;
             if($s<=0){
                 echo 'Broj mora biti veći od nule' . PHP_EOL;
                 continue;
