@@ -14,13 +14,16 @@ class Pomocno{
         }
     }
 
-    public static function unosTeksta($poruka){
+    public static function unosTeksta($poruka,$vrijednost=''){
         while(true){
             $s=readline($poruka);
             $s=trim($s);
-            if(strlen($s)===0){
+            if(strlen($s)===0 && $vrijednost===''){
                 echo 'Obavezan unos' . PHP_EOL;
                 continue;
+            }
+            if(strlen($s)===0 && $vrijednost!==''){
+                return $vrijednost;
             }
             return $s;
         }

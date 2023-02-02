@@ -5,10 +5,16 @@ include 'Pomocno.php';
 class Start{
 
     private $smjerovi;
+    private $dev;
 
-    public function __construct(){
+    public function __construct($argc,$argv){
         $this->smjerovi=[];
-        $this->testPodaci();
+        if($argc>1 && $argv[1]=='dev'){
+            $this->testPodaci();
+            $this->dev=true;
+        }else{
+            $this->dev=false;
+        }
         $this->pozdravnaPoruka();
         $this->glavniIzbornik();
     }   
@@ -50,7 +56,7 @@ class Start{
         echo '2 - Unos novog' . PHP_EOL;
         echo '3 - Promjena postojećeg' . PHP_EOL;
         echo '4 - Brisanje postojećeg' . PHP_EOL;
-        echo '5 - Povaratak na glavni izbornik' . PHP_EOL;
+        echo '5 - Povratak na glavni izbornik' . PHP_EOL;
         $this->odabirOpcijeGrupa();
 }
 
@@ -60,7 +66,7 @@ class Start{
         echo '2 - Unos novog' . PHP_EOL;
         echo '3 - Promjena postojećeg' . PHP_EOL;
         echo '4 - Brisanje postojećeg' . PHP_EOL;
-        echo '5 - Povaratak na glavni izbornik' . PHP_EOL;
+        echo '5 - Povratak na glavni izbornik' . PHP_EOL;
         $this->odabirOpcijeSmjer();
 }
 
@@ -72,6 +78,22 @@ class Start{
             case 2:
                 $this->unosNovogSmjera();
                 break;
+            case 3:
+                if(count($this->smjerovi)===0){
+                    echo 'Nema smjerova u aplikaciji' . PHP_EOL;
+                    $this->smjerIzbornik();
+                }else{
+                    $this->promjenaSmjera();
+                }
+                break;
+            case 4:
+                if(count($this->smjerovi)===0){
+                    echo 'Nema smjerova u aplikaciji' . PHP_EOL;
+                    $this->smjerIzbornik();
+                }else{
+                $this->brisanjeSmjera();
+                }
+                break;
             case 5:
                 $this->glavniIzbornik();
                 break;
@@ -79,6 +101,33 @@ class Start{
                 $this->smjerIzbornik();
     }
 }
+    private function brisanjeSmjera(){
+        $this->pregledSmjerova(false);
+        $rb=Pomocno::rasponBroja('Odaberite smjer: ',1,count($this->smjerovi));
+        $rb--;
+        if($this->dev){
+            echo 'Prije' . PHP_EOL;
+            print_r($this->smjerovi);
+        }
+        array_splice($this->smjerovi,$rb,1);
+        if($this->dev){
+            echo 'Poslije' . PHP_EOL;
+        print_r($this->smjerovi);
+    }
+
+    $this->smjerIzbornik();
+}
+
+    private function promjenaSmjera(){
+        $this->pregledSmjerova(false);
+        $rb=Pomocno::rasponBroja('Odaberite smjer: ',1,count($this->smjerovi));
+        $rb--;
+        $this->smjerovi[$rb]->naziv=Pomocno::unosTeksta('Unesi naziv smjera (' . 
+        $this->smjerovi[$rb]->naziv
+        .'): ', $this->smjerovi[$rb]->naziv);
+        // ostali atributi
+        $this->smjerIzbornik();
+    }
 
     private function odabirOpcijeGrupa(){
         switch(Pomocno::rasponBroja('Odaberite opcije: ' ,1,5)){
@@ -98,14 +147,18 @@ class Start{
         $this->smjerIzbornik();
     }
 
-    private function pregledSmjerova(){
+    private function pregledSmjerova($prikaziIzbornik=true){
         echo '-----------' . PHP_EOL;
         echo 'Smjerovi u aplikaciji' . PHP_EOL;
+        $rb=1;
         foreach($this->smjerovi as $smjer){
-            echo $smjer->naziv . PHP_EOL;
+            echo $rb++ . '. ' . $smjer->naziv . PHP_EOL;
         }
         echo '-----------' . PHP_EOL;
-        $this->smjerIzbornik();
+        if($prikaziIzbornik){
+            $this->smjerIzbornik();
+        }
+        
     }
     
     private function testPodaci(){
@@ -123,6 +176,6 @@ class Start{
     }
 
 }
-
-new Start();
+//echo $argv[1], PHP_EOL;
+new Start($argc,$argv);
 
