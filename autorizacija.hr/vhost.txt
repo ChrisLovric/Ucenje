@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+    ServerAdmin klovric991@gmail.com
+    DocumentRoot "$PATH\autorizacija.hr"
+    ServerName autorizacija.hr
+    ServerAlias www.autorizacija.hr
+    ErrorLog "logs/autorizacija.hr-error.log"
+    CustomLog "logs/autorizacija.hr-access.log" common
+    <Directory "PATH\autorizacija.hr/">
+         Options FollowSymLinks Indexes
+         AllowOverride All
+         Require all granted
+    </Directory>
+</VirtualHost>
