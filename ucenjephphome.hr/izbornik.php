@@ -39,6 +39,10 @@
           <li><a target="_blank"href="foreachpetlja.php">For each petlja</a></li>
         </ul>
         </li>
+        <li><a target="_blank"href="incrementdecrement.php">Inkrement / dekrement</a></li>
+        <li><a target="_blank"href="nizovi.php">Nizovi</a></li>
+        <li><a target="_blank"href="ugradeninizovi.php">Ugrađeni nizovi</a></li>
+        <li><a href="forme.php">HTML forme</a></li>
         <li>
           <a href="#0">Funkcije</a>
         <ul class="submenu menu vertical" data-submenu>
@@ -56,14 +60,19 @@
         <li><a target="_blank"href="nasljedivanje.php">Nasljeđivanje</a></li>
         </ul>
         </li>
-        <li><a target="_blank"href="incrementdecrement.php">Inkrement / dekrement</a></li>
-        <li><a target="_blank"href="nizovi.php">Nizovi</a></li>
-        <li><a target="_blank"href="ugradeninizovi.php">Ugrađeni nizovi</a></li>
-        <li><a href="forme.php">HTML forme</a></li>
+
 
         </ul>
         </li>
-        <li>
+      <li class="has-submenu">
+        <a href="#0">Rad s bazom podataka</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a href="spajanjenabazu.php">Spajanje na bazu</a></li>
+          <li><a href="unosubazu.php">Masovni unos u bazu</a></li>
+          <li><a href="formaunosubazu.php">Forma unos u bazu</a></li>
+        </ul>
+      </li>
+      <li>
           <a href="#0">Zadaci</a>
           <ul class="submenu menu vertical" data-submenu>
           <li><a href="zadatak1.php?boja=red">Zadatak 1</a></li>
