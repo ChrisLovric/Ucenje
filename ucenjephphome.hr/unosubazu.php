@@ -16,7 +16,7 @@
           $sql = 'insert into 
           smjer(naziv,trajanje,certificiran) 
           values ';
-          for($i=0; $i<20000;$i++){
+          for($i=0; $i<20;$i++){
             $sql .= '(\'Novi smjer iz PHP ' . $i . '\',130,true),';
           }
           $sql = substr($sql,0,strlen($sql)-1);
@@ -34,8 +34,8 @@
           $sql = 'insert into 
           osoba(ime,prezime,email) 
           values ';
-          for($i=0; $i<10000;$i++){
-            $sql .= '(\'Nova osoba ' . $i . '\',130,true),';
+          for($i=0; $i<10;$i++){
+            $sql .= '(\'ime ' . $i . '\',\'prezime ' . $i . '\',\'email ' . $i . '\' ),';
           }
           $sql = substr($sql,0,strlen($sql)-1);
           $pocetak = microtime(true);

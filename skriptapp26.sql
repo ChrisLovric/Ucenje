@@ -1,10 +1,15 @@
-# Kada putanja ima razmak onda se putanja stavlja pod navodnike
-# c:\Games\xampp\mysql\bin\mysql -uroot --default_character_set=utf8 < "C:\Users\klovr\Documents\Edunova PP26\SQL\skriptapp26.sql"
-# c:\Games\xampp\mysql\bin\mysql -uroot --default_character_set=utf8 < c:\Users\klovr\Documents\EdunovaPP26\SQL\skriptapp26.sql
+# ljestve (hash) je komentar i on se ne izvodi
+# Izvođenje naredbi na serveru
+# Otvoriti CMD
+# Zaljepiti sljedeću naredbu bez prvog hash znaka
+# c:\xampp\mysql\bin\mysql -uroot --default_character_set=utf8 < C:\Users\dell\Documents\EdunovaPP26\SQL\skriptapp26.sql
 
-drop database if exists edunovapp26;
-create database edunovapp26 default charset utf8mb4;
-use edunovapp26;
+# Kada putanja ima razmak onda se putanja stavlja pod navodnike
+# c:\Games\xampp\mysql\bin\mysql -uroot --default_character_set=utf8 < C:\Users\klovr\Documents\EdunovaPP26\SQL\Ucenje\skriptapp26.sql
+
+drop database if exists edunovapp266;
+create database edunovapp266 default charset utf8mb4;
+use edunovapp266;
 
 create table smjer(
     sifra int not null primary key auto_increment,
