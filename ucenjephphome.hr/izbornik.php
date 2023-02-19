@@ -90,6 +90,7 @@
           <li><a target="_blank"href="vjezbe.php">Vježbe</a></li>
           <li><a target="_blank"href="ciklicna.php">Ciklična tablica</a></li>
           <li><a target="_blank"href="Autorizacija/index.php">Autorizacija</a></li>
+          <li><a target="_blank"href="Ljubavnikalk/index.php">Ljubavni kalkulator</a></li>
         </ul>
       </li>
     </ul>
