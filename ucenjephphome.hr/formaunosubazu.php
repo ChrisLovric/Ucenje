@@ -39,8 +39,8 @@ if(isset($_POST['naziv'])){
 
         <label for="certificiran">Certificiran</label>
         <select name="certificiran" id="certificiran">
-            <option value="DA">DA</option>
-            <option value="NE">NE</option>
+            <option value="1">DA</option>
+            <option value="0">NE</option>
         </select>
         <input type="submit" class="success button expanded" value="Unesi">
 
