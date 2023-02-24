@@ -1,6 +1,7 @@
 <?php
 
-class Log{
+class Log
+{
 
     public static function info($sto){
         echo '<pre>';

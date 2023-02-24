@@ -1,0 +1,27 @@
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+  <div class="title-bar-title">Izbornik</div>
+</div>
+
+<div class="top-bar" id="example-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li>
+      <a style="font-weight: bold;" href="<?=APP::config('url');?>">
+    <?=APP::config('nazivApp');?>
+    </a>
+      </li>
+      <li>
+        <a href="<?=APP::config('url');?>index/kontakt">Kontakt</a>
+    </li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+        <li>
+        <a href="<?=APP::config('url');?>index/prijava">Prijava</a>
+        </li>
+    </ul>
+  </div>
+</div>
+

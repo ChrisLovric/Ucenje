@@ -40,8 +40,7 @@ class App{
 
             $config=require $configFile;
 
-            if(!isset($config[$kljuc]))
-            {
+            if(!isset($config[$kljuc])){
                 return 'Ključ ' . $kljuc . ' nije postavljen u konfiguraciji';
             }
 

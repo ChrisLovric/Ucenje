@@ -1,6 +1,6 @@
 <?php
 
-define('BP', __DIR__ . DIRECTORY_SEPARATOR);
+define('BP',__DIR__ . DIRECTORY_SEPARATOR);
 define('BP_APP', BP . 'app' . DIRECTORY_SEPARATOR);
 
 $zaAutoLoad=[
@@ -9,7 +9,7 @@ $zaAutoLoad=[
     BP_APP . 'model'
 ];
 
-$putanje=implode(PATH_SEPARATOR, $zaAutoLoad);
+$putanje=implode(PATH_SEPARATOR,$zaAutoLoad);
 
 set_include_path($putanje);
 

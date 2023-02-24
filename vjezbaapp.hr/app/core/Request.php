@@ -1,6 +1,7 @@
 <?php
 
-class Request{
+class Request
+{
 
     public static function getRuta(){
         $ruta='';
