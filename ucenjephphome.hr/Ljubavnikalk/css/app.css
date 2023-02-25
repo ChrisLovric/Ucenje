@@ -1,0 +1,48 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image: url("../img/heart.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1{
+    font-size: 85px;
+    padding: 25px;
+    color: rgb(255, 60, 0);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h2{
+    font-size: 85px;
+    padding: 25px;
+    color: rgb(255, 60, 0);
+}
+
+input#prvoime{
+    background-color: rgb(255, 60, 0);
+    border-radius: 15px;
+    text-align: center;
+    border-color: black;
+    font-size: x-large;
+}
+
+input#drugoime{
+    background-color: rgb(255, 60, 0);
+    border-radius: 15px;
+    text-align: center;
+    border-color: black;
+    font-size: x-large;
+}
+
+input#postotak{
+    background-color: rgb(255, 60, 0);
+    border-radius: 15px;
+    font-size: x-large;
+    color: black;
+}
+
+label{
+    color: rgb(255, 60, 0);
+    font-size: x-large;
+}
+
