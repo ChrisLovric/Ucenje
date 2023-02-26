@@ -24,6 +24,9 @@ input#prvoime{
     text-align: center;
     border-color: black;
     font-size: x-large;
+    width: 50%;
+    position: relative;
+    left: 25%;
 }
 
 input#drugoime{
@@ -32,6 +35,9 @@ input#drugoime{
     text-align: center;
     border-color: black;
     font-size: x-large;
+    width: 50%;
+    position: relative;
+    left: 25%;  
 }
 
 input#postotak{
