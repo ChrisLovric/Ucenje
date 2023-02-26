@@ -46,3 +46,8 @@ label{
     font-size: x-large;
 }
 
+h3{
+    font-size: 55px;
+    color: rgb(255, 60, 0);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
