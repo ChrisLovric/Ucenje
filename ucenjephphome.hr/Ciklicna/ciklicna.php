@@ -1,29 +1,21 @@
-<div>Unesite broj redaka i stupaca</div><br>
-    <div>
-        <form action="" method="POST">
-        <label for="rows">Broj redaka</label><br>
-        <input type="number" name="rows" value="<?=$rows?>"><br><br>
-        <label for="columns">Broj stupaca</label><br>
-        <input type="number" name="columns" value="<?=$columns?>"><br><br>
-        <input type="submit" value="KREIRAJ TABLICU">
-        </form>
-    </div>
-
-<div>OUTPUT</div><br>
-
-
 <?php
 $rows=null;
 $columns=null;
+$errorporuka='';
 
 if($_SERVER['REQUEST_METHOD']==='POST'){
     $rows=(int)$_POST['rows'];
     $columns=(int)$_POST['columns'];
     if($rows===0){
         $rows='';
-    }
-    if($columns===0){
+    }if($columns===0){
         $columns='';
+    }if($rows==='' && $columns===''){
+        $errorporuka='OBAVEZAN UNOS REDAKA I STUPACA!';
+    }if($rows!=='' && $columns===''){
+        $errorporuka='OBAVEZAN UNOS REDAKA I STUPACA!';
+    }if($rows==='' && $columns!==''){
+        $errorporuka='OBAVEZAN UNOS REDAKA I STUPACA!';
     }
 }
 
@@ -63,13 +55,5 @@ while($output<=(int)$rows*(int)$columns)
         $maxCol--;
 }
 
-echo '<table>';
-    for($i=0;$i<$rows;$i++){
-        echo '<tr>';
-        for($j=0;$j<$columns;$j++){
-            echo '<td style="text-align: right;">' . $ciklicna[$i][$j] . '</td>';
-        }
-        echo '</tr>';
-    }
-echo '</table>';
+
 ?>
