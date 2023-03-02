@@ -3,19 +3,37 @@
 class IndexController extends Controller
 {
 
+
+    // kasnije ćemo staviti konstruktor
+
     public function index()
     {
-        $this->view->render('index',[
-            'iznos'=>12,
-            'podaci'=>[
-                2,3,4,5,6
-            ]
-            ]);
+
+       $this->view->render('index');
+        
+    }
+
+    public function prijava()
+    {
+     $this->view->render('prijava',[
+        'poruka'=>'',
+        'email'=>''
+     ]);
+        
+    }
+
+    public function odjava()
+    {
+        unset($_SESSION['auth']);
+        session_destroy();
+        header('location:' . App::config('url'));
+        
     }
 
     public function kontakt()
     {
         $this->view->render('kontakt');
+        
     }
 
     public function api()
@@ -29,5 +47,8 @@ class IndexController extends Controller
                 ]
             ]
         ]);
+        
     }
+
+
 }
