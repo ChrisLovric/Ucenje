@@ -5,11 +5,22 @@ class IndexController extends Controller
 
     public function index()
     {
-        $this->view->render('index',[
-            'iznos'=>12,
-            'podaci'=>[
-                2,4,3,2,3]
-            ]);
+        $this->view->render('index');
+    }
+
+    public function prijava()
+    {
+        $this->view->render('prijava',[
+            'poruka'=>'',
+            'email'=>''
+        ]);
+    }
+
+    public function odjava()
+    {
+        unset($_SESSION['auth']);
+        session_destroy();
+        header('location:' . App::config('url'));
     }
 
     public function kontakt()
