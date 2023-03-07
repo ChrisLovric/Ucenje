@@ -1,6 +1,6 @@
 <?php
 
-$dev=$_SERVER['SERVER_ADDR']==='127.0.0.1' ? true : false;
+$dev=$_SERVER['SERVER_ADDR']==='192.168.0.131' ? true : false;
 
 if($dev){
     return [
