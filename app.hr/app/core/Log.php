@@ -4,7 +4,7 @@ class Log{
 
     public static function info($sto){
         echo '<pre>';
-        print_r($sto);
+        var_dump($sto);
         echo '</pre>';
     }
 
