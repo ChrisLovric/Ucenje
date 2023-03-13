@@ -23,7 +23,13 @@
                 <td><i class="fi-<?=$red->certificiran?>"></i></td>
                 <td>
                     <a href="<?=App::config('url')?>smjer/promjena/<?=$red->sifra?>"><i class="fi-pencil"></i></a>
-                    <a href=""><i class="fi-trash"></i></a>
+                    <?php if($red->grupa===0): ?>
+                    <a onclick="return confirm('Sigurno obrisati grupu <?=$red->naziv?>?');"
+                    href="<?=App::config('url')?>smjer/brisanje/<?=$red->sifra?>"><i class="fi-trash"></i></a>
+                <?php else: ?>
+                    <i title="Smjer se ne može obrisati jer ima grupa" 
+                    class="fi-trash" style="color: gray"></i>
+                <?php endif; ?>
                 </td>
             </tr>
             <?php endforeach; ?>
