@@ -147,6 +147,15 @@ values ('Tomislav','Jakopec','tjakopec@gmail.com');
 # 1
 insert into predavac (osoba) values (20);
 
+update grupa set predavac=1 where sifra=1;
+
+# 21
+insert into osoba (ime,prezime,email)
+values ('Marija','Zimska','mzimska@gmail.com');
+
+# 2
+insert into predavac (osoba) values (21);
+
 
 insert into clan(grupa,polaznik)
 values

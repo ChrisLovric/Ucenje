@@ -30,7 +30,11 @@ class App{
 
         if(!(class_exists($controller) && method_exists($controller,$metoda)))
         {
-            echo 'Ne postoji ' . $controller . '-&gt;' . $metoda;
+            $v=new View();
+            $v->render('notFoundController',[
+                'poruka'=>'Ne postoji ' . $controller . '-&gt;' . $metoda
+            ]);
+            //echo 'Ne postoji ' . $controller . '-&gt;' . $metoda;
             return;
         }
             $instanca=new $controller();

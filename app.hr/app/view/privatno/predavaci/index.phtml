@@ -1,0 +1,15 @@
+<a href="<?=App::config('url')?>predavac/novi" class="success button expanded">
+Dodaj novog predavača</a>
+
+<div class="grid-x grid-padding-x">
+    <?php foreach($podaci as $red): ?>
+        <div class="large-3 medium-6 small-12 cell">
+            <div class="callout">
+                <img src="<?=App::config('url')?>public/img/nepoznato.png" 
+                alt="<?=$red->ime?> <?=$red->prezime?>">
+
+                <h1><?=$red->ime?> <?=$red->prezime?></h1>
+            </div>
+        </div>
+    <?php endforeach;?>
+</div>
