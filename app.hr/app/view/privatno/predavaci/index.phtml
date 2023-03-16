@@ -8,7 +8,11 @@ Dodaj novog predavača</a>
                 <img src="<?=App::config('url')?>public/img/nepoznato.png" 
                 alt="<?=$red->ime?> <?=$red->prezime?>">
 
-                <h1><?=$red->ime?> <?=$red->prezime?></h1>
+                <p><?=$red->ime?> <?=$red->prezime?></h1><hr>
+                <?php
+                $par=['predavac', $red->ime . ' ' . $red->prezime, $red->grupa==0];
+                include BP_APP . 'view/includes/promjenabrisanje.phtml';
+                ?>
             </div>
         </div>
     <?php endforeach;?>

@@ -23,7 +23,7 @@
                 <td><i class="fi-<?=$red->certificiran?>"></i></td>
                 <td>
                     <a href="<?=App::config('url')?>smjer/promjena/<?=$red->sifra?>"><i class="fi-pencil"></i></a>
-                    <?php if($red->grupa===0): ?>
+                    <?php if($red->grupa==0): ?>
                     <a onclick="return confirm('Sigurno obrisati grupu <?=$red->naziv?>?');"
                     href="<?=App::config('url')?>smjer/brisanje/<?=$red->sifra?>"><i class="fi-trash"></i></a>
                 <?php else: ?>

@@ -1,6 +1,8 @@
 <?php
 
-class SmjerController extends AutorizacijaController
+class SmjerController 
+extends AutorizacijaController
+implements ViewSucelje
 {
 
     private $viewPutanja='privatno' . DIRECTORY_SEPARATOR . 'smjerovi' . DIRECTORY_SEPARATOR;
@@ -113,13 +115,13 @@ class SmjerController extends AutorizacijaController
         $this->view->render($this->viewPutanja . 'novi',$parametri);
     }
 
-    private function pripremiZaView()
+    public function pripremiZaView()
     {
         $this->e=(object)$_POST;
         $this->e->certificiran=$this->e->certificiran==='true' ? true : false;
     }
 
-    private function pripremiZaBazu()
+    public function pripremiZaBazu()
     {
         $this->e->cijena=$this->nf->parse($this->e->cijena);
         $this->e->upisnina=$this->nf->parse($this->e->upisnina);
@@ -253,7 +255,7 @@ class SmjerController extends AutorizacijaController
 
 
 
-    private function pocetniPodaci()
+    public function pocetniPodaci()
     {
         $e=new stdClass();
         $e->naziv='';

@@ -1,3 +1,14 @@
 #program{
     min-height: 400px;
 }
+
+.fi-pencil{
+    margin-right: 10px;
+    font-size: 25px;
+    color: green;
+}
+
+.fi-trash{
+    font-size: 25px;
+    color: crimson;
+}
