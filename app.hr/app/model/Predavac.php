@@ -172,4 +172,64 @@ class Predavac
 
         $veza->commit();
     }
+
+    public static function postojiIstiOIB($oib,$sifra=0)
+    {
+        if($sifra>0){
+            $sql = ' select count(b.sifra) 
+            from predavac a inner join osoba b
+            on a.osoba=b.sifra where b.oib=:oib ';
+        }else{
+            $sql = ' select count(a.sifra) 
+            from osoba a where a.oib=:oib ';
+        }
+
+        if($sifra>0){
+            $sql.=' and a.sifra!=:sifra';
+        }
+
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare($sql);
+
+        $parametri=[];
+        $parametri['oib']=$oib;
+
+        if($sifra>0){
+            $parametri['sifra']=$sifra;
+        }
+
+        $izraz->execute($parametri);
+        $sifra=$izraz->fetchColumn();
+        return $sifra==0;
+    }
+
+    public static function postojiIstiMail($email,$sifra=0)
+    {
+        if($sifra>0){
+            $sql = ' select count(b.sifra) 
+            from predavac a inner join osoba b
+            on a.osoba=b.sifra where b.email=:email ';
+        }else{
+            $sql = ' select count(a.sifra) 
+            from osoba a where a.email=:email ';
+        }
+
+        if($sifra>0){
+            $sql.=' and a.sifra!=:sifra';
+        }
+
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare($sql);
+
+        $parametri=[];
+        $parametri['email']=$email;
+
+        if($sifra>0){
+            $parametri['sifra']=$sifra;
+        }
+
+        $izraz->execute($parametri);
+        $sifra=$izraz->fetchColumn();
+        return $sifra==0;
+    }
 }

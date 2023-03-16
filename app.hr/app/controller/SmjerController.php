@@ -54,16 +54,7 @@ implements ViewSucelje
     public function promjena($sifra='')
     {
         if($_SERVER['REQUEST_METHOD']==='GET'){
-            if(strlen(trim($sifra))===0){
-                header('location: ' . App::config('url') . 'index/odjava');
-                return;
-            }
-
-            $sifra=(int)$sifra;
-            if($sifra===0){
-                header('location: ' . App::config('url') . 'index/odjava');
-                return;
-            }
+            $this->provjeraIntParametra($sifra);
 
             $this->e=Smjer::readOne($sifra);
 
