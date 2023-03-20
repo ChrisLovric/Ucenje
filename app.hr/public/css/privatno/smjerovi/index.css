@@ -1,6 +1,4 @@
-tbody > tr > td:nth-child(2),
-tbody > tr > td:nth-child(3),
-tbody > tr > td:nth-child(4){
+tbody > tr > td:not(:first-child,:last-child,:nth-child(5)){
     text-align: right;
 }
 
@@ -13,7 +11,7 @@ thead > tr > th{
 }
 
 tbody > tr > td:first-child{
-    font-weight: bold;
+font-weight: bold;
 }
 
 .success.button.expanded{
@@ -23,11 +21,11 @@ tbody > tr > td:first-child{
 
 .fi-check{
     font-size: 25px;
-    color: green;
+    color: green
 }
 
 .fi-x{
     font-size: 25px;
-    color: crimson;
+    color: crimson
 }
 

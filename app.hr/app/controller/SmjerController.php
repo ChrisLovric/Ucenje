@@ -8,7 +8,7 @@ implements ViewSucelje
     private $viewPutanja='privatno' . DIRECTORY_SEPARATOR . 'smjerovi' . DIRECTORY_SEPARATOR;
     private $nf;
     private $e;
-    private $poruka='';
+    private $poruke=[];
 
     public function __construct()
     {
@@ -20,8 +20,7 @@ implements ViewSucelje
     public function index()
     {
         $this->view->render($this->viewPutanja . 'index',[
-            'podaci'=>$this->prilagodiPodatke(Smjer::read()),
-            'css'=>'smjer.css'
+            'podaci'=>$this->prilagodiPodatke(Smjer::read())
         ]);
     }
 
@@ -30,7 +29,7 @@ implements ViewSucelje
         if($_SERVER['REQUEST_METHOD']==='GET'){
             $this->pozoviView([
                 'e'=>$this->pocetniPodaci(),
-                'poruka'=>$this->poruka
+                'poruke'=>$this->poruke
             ]);
             return;
         }
@@ -39,16 +38,13 @@ implements ViewSucelje
         if(!$this->kontrolaNovi()){
             $this->pozoviView([
                 'e'=>$this->e,
-                'poruka'=>$this->poruka
+                'poruke'=>$this->poruke
             ]);
             return;
         }
         $this->pripremiZaBazu();
         Smjer::create((array)$this->e);
-        $this->pozoviView([
-            'e'=>$this->pocetniPodaci(),
-            'poruka'=>'Uspješno spremljeno'
-        ]);
+        header('location: ' . App::config('url') . 'smjer');
     }
 
     public function promjena($sifra='')
@@ -68,7 +64,7 @@ implements ViewSucelje
 
             $this->view->render($this->viewPutanja . 'promjena',[
                 'e'=>$this->e,
-                'poruka'=>'Promijenite podatke po želji'
+                'poruke'=>'Promijenite podatke po želji'
             ]);
             return;
         }
@@ -77,7 +73,7 @@ implements ViewSucelje
         if(!$this->kontrolaPromjena()){
             $this->view->render($this->viewPutanja . 'promjena',[
                 'e'=>$this->e,
-                'poruka'=>$this->poruka
+                'poruke'=>$this->poruke
             ]);
             return;
         }
@@ -85,9 +81,10 @@ implements ViewSucelje
         $this->e->sifra=$sifra;
         $this->pripremiZaBazu();
         Smjer::update((array)$this->e);
+        $this->poruke['poruka']='Uspješno promijenjeno';
         $this->view->render($this->viewPutanja . 'promjena',[
             'e'=>$this->e,
-            'poruka'=>'Uspješno promijenjeno'
+            'poruke'=>$this->poruke
         ]);
     }
 
@@ -121,29 +118,35 @@ implements ViewSucelje
 
     private function kontrolaNovi()
     {
-        return $this->kontrolaNaziv() && $this->kontrolaCijena() && $this->kontrolaUpisnina();
+        return $this->kontrolaNaziv()
+        & $this->kontrolaCijena()
+        & $this->kontrolaUpisnina()
+        & $this->kontrolaTrajanje();
     }
 
     private function kontrolaPromjena()
     {
-        return $this->kontrolaNazivPromjena() && $this->kontrolaCijena() && $this->kontrolaUpisnina() && $this->kontrolaTrajanje();
+        return $this->kontrolaNazivPromjena()
+        & $this->kontrolaCijena()
+        & $this->kontrolaUpisnina()
+        & $this->kontrolaTrajanje();
     }
 
     private function kontrolaNaziv()
     {
         $s=$this->e->naziv;
         if(strlen(trim($s))===0){
-            $this->poruka='Naziv obavezno';
+            $this->poruke['naziv']='Naziv obavezno';
             return false;
         }
 
         if(strlen(trim($s))>50){
-            $this->poruka='Naziv ne smije imati više od 50 znakova';
+            $this->poruke['naziv']='Naziv ne smije imati više od 50 znakova';
             return false;
         }
 
         if(Smjer::postojiIstiNazivUBazi($s)){
-            $this->poruka='Naziv već postoji u bazi';
+            $this->poruke['naziv']='Naziv već postoji u bazi';
             return false;
         }
 
@@ -154,12 +157,12 @@ implements ViewSucelje
     {
         $s=$this->e->naziv;
         if(strlen(trim($s))===0){
-            $this->poruka='Naziv obavezno';
+            $this->poruke['naziv']='Naziv obavezno';
             return false;
         }
 
         if(strlen(trim($s))>50){
-            $this->poruka='Naziv ne smije imati više od 50 znakova';
+            $this->poruke['naziv']='Naziv ne smije imati više od 50 znakova';
             return false;
         }
 
@@ -169,23 +172,23 @@ implements ViewSucelje
     private function kontrolaCijena()
     {
         if(strlen(trim($this->e->cijena))===0){
-            $this->poruka='Cijena obavezno';
+            $this->poruke['cijena']='Cijena obavezno';
             return false;
         }
 
         $cijena=$this->nf->parse($this->e->cijena);
         if(!$cijena){
-            $this->poruka='Cijena nije u dobrom formatu';
+            $this->poruke['cijena']='Cijena nije u dobrom formatu';
             return false;
         }
 
         if($cijena<=0){
-            $this->poruka='Cijena mora biti veća od nule';
+            $this->poruke['cijena']='Cijena mora biti veća od nule';
             return false;
         }
 
         if($cijena>3000){
-            $this->poruka='Cijena ne smije biti veća od 3000';
+            $this->poruke['cijena']='Cijena ne smije biti veća od 3000';
             return false;
         }
 
@@ -195,23 +198,23 @@ implements ViewSucelje
     private function kontrolaUpisnina()
     {
         if(strlen(trim($this->e->upisnina))===0){
-            $this->poruka='Upisnina obavezno';
+            $this->poruke['upisnina']='Upisnina obavezno';
             return false;
         }
 
         $upisnina=$this->nf->parse($this->e->upisnina);
         if(!$upisnina){
-            $this->poruka='Upisnina nije u dobrom formatu';
+            $this->poruke['upisnina']='Upisnina nije u dobrom formatu';
             return false;
         }
 
         if($upisnina<=0){
-            $this->poruka='Upisnina mora biti veća od nule';
+            $this->poruke['upisnina']='Upisnina mora biti veća od nule';
             return false;
         }
 
         if($upisnina>3000){
-            $this->poruka='Upisnina ne smije biti veća od 3000';
+            $this->poruke['upisnina']='Upisnina ne smije biti veća od 3000';
             return false;
         }
 
@@ -220,24 +223,25 @@ implements ViewSucelje
 
     private function kontrolaTrajanje()
     {
-        if(strlen(trim($this->e->trajanje))===0){
-            $this->poruka='Trajanje obavezno';
+        $s=$this->e->trajanje;
+        if(strlen(trim($s))===0){
+            return true;
+        }
+
+        $broj=(int)$s;
+
+        if($broj===0){
+            $this->poruke['trajanje']='Trajanje mora biti cijeli broj veći od 0';
             return false;
         }
 
-        $trajanje=$this->nf->parse($this->e->trajanje);
-        if(!$trajanje){
-            $this->poruka='Trajanje nije u dobrom formatu';
+        if($broj<0){
+            $this->poruke['trajanje']='Trajanje ne smije biti manje od 0';
             return false;
         }
 
-        if($trajanje<=0){
-            $this->poruka='Trajanje mora biti veće od nule';
-            return false;
-        }
-
-        if($trajanje>130){
-            $this->poruka='Trajanje ne smije biti veće od 130';
+        if($broj>1000){
+            $this->poruke['trajanje']='Maksimalano trajanje je 1000 sati';
             return false;
         }
 
