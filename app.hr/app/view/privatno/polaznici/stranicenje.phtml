@@ -1,0 +1,23 @@
+
+<nav aria-label="Pagination">
+        <ul class="pagination">
+            <?php if($stranica===1): ?>
+            <li class="pagination-previous disabled">Prethodno <span class="show-for-sr">stranica</span></li>
+            <?php else: ?>
+                <li class="pagination-previous"><a href="<?=App::config('url')?>polaznik/index?stranica=<?php echo $stranica-1; ?>&uvjet=<?=$uvjet?>" aria-label="Prethodno">Prethodno <span class="show-for-sr">stranica</span></a></li>
+                <?php endif;?>
+            <li class="current"><span class="show-for-sr">Trenutna</span> <?=$stranica?></li>
+            <?php if($stranica===$zadnja): ?>
+            <li class="pagination-next disabled">
+                Sljedeće <span class="show-for-sr">stranica</span>
+                </li>
+            <?php else: ?>
+                <li class="pagination-next">
+                <a href="<?=App::config('url')?>polaznik/index?stranica=<?php echo $stranica+1; ?>&uvjet=<?=$uvjet?>" aria-label="Sljedeće">Sljedeće <span class="show-for-sr">stranica</span></a>        
+            </li>
+                <?php endif;?>
+                
+            
+            
+        </ul>
+    </nav>

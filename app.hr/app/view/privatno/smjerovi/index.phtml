@@ -24,7 +24,7 @@
                 <td>
                     <a href="<?=App::config('url')?>smjer/promjena/<?=$red->sifra?>"><i class="fi-pencil"></i></a>
                     <?php if($red->grupa==0): ?>
-                    <a onclick="return confirm('Sigurno obrisati grupu <?=$red->naziv?>?');"
+                    <a onclick="return confirm('Sigurno obrisati smjer <?=$red->naziv?>?');"
                     href="<?=App::config('url')?>smjer/brisanje/<?=$red->sifra?>"><i class="fi-trash"></i></a>
                 <?php else: ?>
                     <i title="Smjer se ne može obrisati jer ima grupa" 
