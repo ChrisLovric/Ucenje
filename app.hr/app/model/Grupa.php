@@ -48,7 +48,25 @@ class Grupa
         $izraz->execute([
             'sifra'=>$sifra
         ]);
-        return $izraz->fetch();
+        $grupa = $izraz->fetch();
+
+        $izraz = $veza->prepare('
+        
+        select b.sifra, 
+        concat(c.ime, \' \', c.prezime) as imeprezime
+        from clan a inner join polaznik b
+        on a.polaznik  = b.sifra 
+        inner join osoba c on b.osoba =c.sifra 
+        where a.grupa=:sifra;
+    
+    ');
+    $izraz->execute([
+        'sifra'=>$sifra
+    ]);
+
+    $grupa->polaznici = $izraz->fetchAll();
+
+        return $grupa;
     }
 
     public static function create($parametri)
@@ -64,6 +82,7 @@ class Grupa
         
         ');
         $izraz->execute($parametri);
+        return $veza->lastInsertId();
     }
 
     public static function update($parametri)

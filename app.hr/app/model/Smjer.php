@@ -2,10 +2,12 @@
 
 class Smjer
 {
-    public static function  read()
+    // CRUD operacije
+
+    public static function read()
     {
-        $veza=DB::getInstance();
-        $izraz=$veza->prepare('
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
         
         select 	a.sifra, 
                 a.naziv,
@@ -31,8 +33,13 @@ class Smjer
 
     public static function readOne($sifra)
     {
-        $veza=DB::getInstance();
-        $izraz=$veza->prepare('select * from smjer where sifra=:sifra');
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
+        
+            select * from smjer
+            where sifra=:sifra
+        
+        ');
         $izraz->execute([
             'sifra'=>$sifra
         ]);
@@ -41,10 +48,13 @@ class Smjer
 
     public static function create($parametri)
     {
-        $veza=DB::getInstance();
-        $izraz=$veza->prepare('
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
         
-        insert into smjer (naziv,cijena,upisnina,trajanje,certificiran) values (:naziv,:cijena,:upisnina,:trajanje,:certificiran);
+            insert into smjer(naziv,cijena,upisnina,
+            trajanje,certificiran) values
+            (:naziv,:cijena,:upisnina,
+            :trajanje,:certificiran);
         
         ');
         $izraz->execute($parametri);
@@ -52,10 +62,16 @@ class Smjer
 
     public static function update($parametri)
     {
-        $veza=DB::getInstance();
-        $izraz=$veza->prepare('
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
         
-        update smjer set naziv=:naziv,cijena=:cijena,upisnina=:upisnina,trajanje=:trajanje,certificiran=:certificiran where sifra=:sifra
+            update smjer set
+            naziv=:naziv,
+            cijena=:cijena,
+            upisnina=:upisnina,
+            trajanje=:trajanje,
+            certificiran=:certificiran
+            where sifra=:sifra
         
         ');
         $izraz->execute($parametri);
@@ -78,11 +94,11 @@ class Smjer
 
     public static function postojiIstiNazivUBazi($s)
     {
-        $veza=DB::getInstance();
-        $izraz=$veza->prepare('
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
         
-        select sifra from smjer
-        where naziv=:naziv
+            select sifra from smjer
+            where naziv=:naziv
         
         ');
         $izraz->execute([
@@ -91,4 +107,19 @@ class Smjer
         $sifra=$izraz->fetchColumn();
         return $sifra>0;
     }
+
+    public static function prviSmjer()
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
+        
+            select sifra from smjer
+            order by sifra limit 1
+        
+        ');
+        $izraz->execute();
+        $sifra=$izraz->fetchColumn();
+        return $sifra;
+    }
+
 }

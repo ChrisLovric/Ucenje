@@ -1,0 +1,20 @@
+<form action="<?php echo App::config('url') ?>grupa/promjena/<?=$e->sifra?>" 
+        method="post">
+    <div class="grid-x grid-padding-x">
+        <div class="large-6 cell">
+            <?php include_once 'osnovniPodaci.phtml'?>
+        </div>
+        <div class="large-6 cell">
+        <?php include_once 'popisPolaznika.phtml'?>
+        </div>
+
+        <div class="large-6 cell">
+            <a href="<?=App::config('url')?>grupa/odustani/<?=$e->sifra?>"
+            class="button alert expanded">Odustani</a>
+        </div>
+        <div class="large-6 cell">
+            <input type="submit" class="button success expanded" 
+            value="Spremi">
+        </div>
+    </div>
+</form>

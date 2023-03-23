@@ -1,0 +1,6 @@
+.popispolaznika{
+    max-height: 400px;
+    overflow: auto;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}

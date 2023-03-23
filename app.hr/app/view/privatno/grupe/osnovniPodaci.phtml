@@ -1,0 +1,37 @@
+
+    <?php echo App::inputText('naziv',$e->naziv); ?>
+
+    <label for="smjer">Smjer</label>
+    <select name="smjer" id="smjer">
+        <?php foreach($smjerovi as $smjer): ?>
+            <option 
+            <?php if($smjer->sifra==$e->smjer){
+                echo ' selected="selected" ';
+            } ?>
+            value="<?=$smjer->sifra?>">
+                <?=$smjer->naziv?>
+            </option>
+        <?php endforeach;?>
+    </select>
+
+
+    <label for="predavac">Predavač</label>
+    <select name="predavac" id="predavac">
+        <?php foreach($predavaci as $predavac): ?>
+            <option 
+            <?php if($predavac->sifra==$e->predavac){
+                echo ' selected="selected" ';
+            } ?>
+            value="<?=$predavac->sifra?>">
+                <?=$predavac->ime?> <?=$predavac->prezime?>
+            </option>
+        <?php endforeach;?>
+    </select>
+
+
+    <label for="datumpocetka">Datum početka</label>
+    <input type="date" name="datumpocetka" id="datumpocetka"
+    value="<?=$e->datumpocetka?>">
+
+    <?php echo App::inputText('maksimalnopolaznika',$e->maksimalnopolaznika); ?>
+
