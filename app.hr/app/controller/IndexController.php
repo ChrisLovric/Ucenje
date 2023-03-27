@@ -29,6 +29,11 @@ class IndexController extends Controller
         header('location:' . App::config('url'));
     }
 
+    public function jsosnove()
+    {
+        $this->view->render('jsosnove');
+    }
+
     public function kontakt()
     {
         $this->view->render('kontakt');
