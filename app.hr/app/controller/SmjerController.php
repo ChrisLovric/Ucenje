@@ -266,4 +266,13 @@ implements ViewSucelje
         }
         return $this->nf->format($broj); 
     }
+
+    public function v1($ruta)
+    {
+        switch($ruta){
+            case 'read':
+                $this->view->api(Smjer::read());
+            break;
+        }
+    }
 }
