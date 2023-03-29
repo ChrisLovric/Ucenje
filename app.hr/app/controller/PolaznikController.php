@@ -12,6 +12,11 @@ implements ViewSucelje
 
     public function index()
     {        
+        parent::setJSdependency([
+            '<script>
+                 let url=\'' . App::config('url') . '\';
+             </script>'
+         ]);
 
         if(isset($_GET['uvjet'])){
             $uvjet = trim($_GET['uvjet']);
@@ -47,7 +52,7 @@ implements ViewSucelje
         if($_SERVER['REQUEST_METHOD']==='GET'){
             $this->view->render($this->viewPutanja .
             'detalji',[
-                'legend'=>'Unos novog polaznik',
+                'legend'=>'Unos novog polaznika',
                 'akcija'=>'Dodaj',
                 'poruka'=>'Popunite sve tražene podatke',
                 'e'=>$this->pocetniPodaci()
@@ -222,5 +227,9 @@ implements ViewSucelje
     public function pripremiZaBazu()
     {
 
+    }
+
+    public function ajaxSearch($uvjet){
+        $this->view->api(Polaznik::read($uvjet));
     }
 }

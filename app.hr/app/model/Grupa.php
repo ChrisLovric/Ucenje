@@ -114,6 +114,24 @@ class Grupa
         $izraz->execute([
             'sifra'=>$sifra
         ]);
-        $izraz->execute();
+    }
+
+    public static function postojiPolaznikGrupa($grupa, $polaznik)
+    {   
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
+        
+           select count(*) as ukupno 
+           from clan where grupa=:grupa 
+           and polaznik=:polaznik
+        
+        ');
+        $izraz->execute([
+            'grupa'=>$grupa,
+            'polaznik'=>$polaznik
+        ]);
+        $rez = (int)$izraz->fetchColumn();
+        return $rez>0;
+
     }
 }

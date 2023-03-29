@@ -86,6 +86,17 @@ implements ViewSucelje
 
     public function promjena($sifra='')
     {
+        parent::setCSSdependency([
+            '<link rel="stylesheet" href="' . App::config('url') . 'public/css/dependency/jquery-ui.css">'
+        ]);
+        parent::setJSdependency([
+            '<script src="' . App::config('url') . 'public/js/dependency/jquery-ui.js"></script>',
+            '<script>
+                let url=\'' . App::config('url') . '\';
+                let grupasifra=' . $sifra . ';
+            </script>'
+        ]);
+
         if($_SERVER['REQUEST_METHOD']==='GET'){
             $this->promjena_GET($sifra);
             return;
@@ -179,5 +190,18 @@ implements ViewSucelje
         $e->datumpocetka='';
         $e->maksimalnopolaznika=20;
         return $e;
+    }
+
+    public function dodajpolaznik()
+    {
+        $res = new stdClass();
+        if(!Grupa::postojiPolaznikGrupa($_GET['grupa'],
+                    $_GET['polaznik'])){
+            Grupa::dodajPolaznikGrupa($_GET['grupa'],
+                    $_GET['polaznik']);
+                    }
+
+                    header('Content-Type: application/json; charset=utf-8');
+                    echo json_encode($res,JSON_NUMERIC_CHECK);
     }
 }
