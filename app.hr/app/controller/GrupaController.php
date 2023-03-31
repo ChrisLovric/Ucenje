@@ -199,9 +199,19 @@ implements ViewSucelje
                     $_GET['polaznik'])){
             Grupa::dodajPolaznikGrupa($_GET['grupa'],
                     $_GET['polaznik']);
+            $res->error=false;
+            $res->description='Uspješno dodano';
+                    }else{
+                        $res->error=true;
+                        $res->description='Polaznik već postoji na grupi';
                     }
 
                     header('Content-Type: application/json; charset=utf-8');
                     echo json_encode($res,JSON_NUMERIC_CHECK);
+    }
+
+    public function obrisiPolaznik()
+    {
+        Grupa::obrisiPolaznikGrupa($_GET['grupa'],$_GET['polaznik']);
     }
 }

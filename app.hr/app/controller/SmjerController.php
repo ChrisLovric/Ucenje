@@ -22,6 +22,11 @@ implements ViewSucelje
 
     public function index()
     {     
+        parent::setJSdependency([
+            '<script>
+                let url=\'' . App::config('url') . '\';
+            </script>'
+        ]);
         
         $poruka='';
         if(isset($_GET['p'])){
@@ -274,5 +279,10 @@ implements ViewSucelje
                 $this->view->api(Smjer::read());
             break;
         }
+    }
+
+    public function grupeSmjera($sifra)
+    {
+        echo 'WP23, KL12';
     }
 }

@@ -15,7 +15,8 @@
         <?php foreach($podaci as $red): ?>
             <tr>
                 <td>
-                    <span title="<?=$red->title?>"><?=$red->naziv?></span> 
+                <span title="<?=$red->title?>" id="s_<?=$red->sifra?>" class="nazivSmjera">
+                        <?=$red->naziv?></span> 
                 </td>
                 <td><?=$red->cijena?></td>
                 <td><?=$red->upisnina?></td>
